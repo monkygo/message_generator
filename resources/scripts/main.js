@@ -1,4 +1,3 @@
-const quoteContainer = document.getElementById("quote");
 // quoteContainer.innerHTML = "";
 
 const quotesFromConfucius = [
@@ -18,7 +17,7 @@ const quotesFromTzu = [
   "The greatest victory is that which requires no battle.",
   "He will win who knows when to fight and when not to fight.",
   "One may know how to conquer without being able to do it.",
-  "Supreme excellence consists of breaking the enemy’s resistance without fighting.",
+  "Supreme excellence consists of breaking the enemy's resistance without fighting.",
   "Appear weak when you are strong, and strong when you are weak.",
   "In the midst of chaos, there is also opportunity.",
   "Keep your friends close, your enemies even closer.",
@@ -28,7 +27,7 @@ const quotesFromTzu = [
 ];
 
 const quotesFromBuddha = [
-  "The past is already gone. The future is not yet here. There’s only one moment for you to live.",
+  "The past is already gone. The future is not yet here. There's only one moment for you to live.",
   "Radiate boundless love towards the entire world.",
   "If anything is worth doing, do it with all your heart.",
   "It is better to conquer yourself than to win a thousand battles, then the victory is yours. It cannot be taken from you, not by angels or by demons, heaven or hell.",
@@ -40,7 +39,7 @@ const quotesFromBuddha = [
   "Every morning, we are born again. What we do today is what matters most.",
   "No one saves us but ourselves. No one can, and no one may. We ourselves must walk the path.",
   "A disciplined mind brings happiness.",
-  "To live a pure unselfish life, one must count nothing as one’s own in the midst of abundance.",
+  "To live a pure unselfish life, one must count nothing as one's own in the midst of abundance.",
   "An idea that is developed and put into action is more important than an idea that exists only as an idea.",
   "You must love yourself before you love another. By accepting yourself and fully being what you are, your simple presence can make others happy.",
 ];
@@ -59,10 +58,9 @@ const mergeQuotes = () => {
   return quotes;
 };
 
-const selectRandomQuote = () => {
-  const randNum = getRandNum();
+const getRandomQuote = (randNum) => {
   const quotes = mergeQuotes();
-  return `${quotes[randNum]} -- ${getAuthorFromQuoteIndex(randNum)}`;
+  return quotes[randNum];
 };
 
 const getAuthorFromQuoteIndex = (index) => {
@@ -86,4 +84,13 @@ const getAuthorFromQuoteIndex = (index) => {
   }
 };
 
-quoteContainer.innerHTML = selectRandomQuote();
+const showRandomQuote = () => {
+  const randNum = getRandNum();
+  const quotes = mergeQuotes();
+  document.getElementById("author").innerHTML = `${getAuthorFromQuoteIndex(
+    randNum
+  )}:`;
+  document.getElementById("quote").innerHTML = getRandomQuote(randNum);
+};
+
+showRandomQuote();
